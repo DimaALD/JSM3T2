@@ -1,0 +1,24 @@
+{
+  "name": "jsm3t2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "task2.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "yargs": "*",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DimaALD/JSM3T2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DimaALD/JSM3T2/issues"
+  },
+  "homepage": "https://github.com/DimaALD/JSM3T2#readme"
+}
