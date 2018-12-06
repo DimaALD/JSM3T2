@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
-const fs = require('fs')
+/* eslint-disable no-lone-blocks */
+const json = require('./res.json')
 
 function checkParams (obj) {
   Object.keys(obj).forEach(key => {
@@ -9,7 +10,8 @@ function checkParams (obj) {
   })
   if (Object.keys(obj).length !== 0) { return obj }
 }
-function findCharacters (array, obj, addPar) {
+addPar = checkParams(addPar)
+function findCharacter (array, obj, addPar) {
   let resultOfSearch = array.results.filter(page => {
     let result = false
     if (page.name.includes(obj.name)) {
@@ -26,7 +28,6 @@ function findCharacters (array, obj, addPar) {
     return result
   })
 
-  fs.writeFileSync('RESULT.json', JSON.stringify(resultOfSearch, null, ' '))
+  return resultOfSearch
 }
-module.exports.checkParams = checkParams
-module.exports.findCharacters = findCharacters
+console.log(findCharacter(json, obj, addPar))
