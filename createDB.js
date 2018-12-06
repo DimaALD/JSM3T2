@@ -31,3 +31,4 @@ function printInFile(){
 }
 
 module.exports.getAllData = getAllData
+module.exports.printInFile = printInFile

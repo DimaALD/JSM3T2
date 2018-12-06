@@ -1,7 +1,7 @@
-const info = require('./info.json')
+
 const fs = require('fs')
-function search(obj){
-    let resultOfSearch = info.results.filter(page => {
+function search(json,obj){
+    let resultOfSearch = json.results.filter(page => {
         let result = true
         for(key in obj){
             if(page[key] !== obj[key])
@@ -9,6 +9,6 @@ function search(obj){
         }
         return result
     })
-    fs.writeFileSync('res.json', JSON.stringify(resultOfSearch, null, ' '))
+    fs.writeFileSync('res1.json', JSON.stringify(resultOfSearch, null, ' '))
 }
 module.exports.search = search

@@ -15,11 +15,15 @@ yargs.command('find [name] [type] [status] [species] [gender]','Input name ',{},
             delete obj[key]
           }
       })
-      console.log(obj)
-      search.search(obj) 
+      createDB.getAllData().then(body => {
+        search.search(body, obj) 
+      })
+     
 })
 .alias('n', 'name')
 .alias('t','type')
 .alias('s', 'status')
 .alias('g', 'gender')
-.help().demandCommand(1, 'You need at least one command before moving on').argv
+.help()
+.demandCommand(1, 'You need at least one command before moving on')
+.argv
