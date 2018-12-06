@@ -1,6 +1,6 @@
 const request = require('request-promise')
 const fs = require('fs')
-
+// убрать хардкод
 const arrayOfOptions = () => {
     let options = []
     for (let i = 1; i < 26; i++) {
@@ -23,12 +23,4 @@ async function getAllData() {
     })
     return result
 }
-
-function printInFile(){
-    getAllData().then(body=>{
-        fs.writeFileSync('info.json', JSON.stringify(body, null, " "))
-    })
-}
-
 module.exports.getAllData = getAllData
-module.exports.printInFile = printInFile

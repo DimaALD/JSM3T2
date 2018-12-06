@@ -1,6 +1,6 @@
 const yargs = require('yargs')
 const createDB = require('./createDB')
-const search = require('./search')
+const search = require('./findCharacter')
 yargs.command('find [name] [type] [status] [species] [gender]','Input name ',{},(argv)=>{
       let obj = {
           name : argv.name,
@@ -15,8 +15,8 @@ yargs.command('find [name] [type] [status] [species] [gender]','Input name ',{},
             delete obj[key]
           }
       })
-      createDB.getAllData().then(body => {
-        search.search(body, obj) 
+        createDB.getAllData().then(body => {
+        search.find(body, obj) 
       })
      
 })
