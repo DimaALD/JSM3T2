@@ -9,24 +9,39 @@ function checkParams (obj) {
   })
   if (Object.keys(obj).length !== 0) { return obj }
 }
-function findCharacters (array, obj, addPar) {
-  let resultOfSearch = array.results.filter(page => {
-    let result = false
-    if (page.name.includes(obj.name)) {
-      result = true
+function findCharacters (list, mainParams, addParamsams) {
+  let resultOfSearch = list.results.filter(page => {
+    let result = true
+    if (mainParams) {
+      if (mainParams.name && !page.name.includes(mainParams.name)) {
+        result = false
+      }
+      for (key in mainParams) {
+        if (key !== 'name' && mainParams[key] && page[key] !== mainParams[key]) { result = false }
+      }
     }
-    for (key in obj) {
-      if (key !== 'name' && page[key] !== obj[key]) { result = false }
-    }
-    if (result && addPar) {
-      for (key in addPar) {
-        if (page[key].name !== addPar[key]) { result = false }
+    if (result && addParamsams) {
+      for (key in addParamsams) {
+        if (page[key].name !== addParamsams[key]) { result = false }
       }
     }
     return result
   })
-
-  fs.writeFileSync('RESULT.json', JSON.stringify(resultOfSearch, null, ' '))
+  if (resultOfSearch.length !== 0) {
+    console.log('Characters with matched parametres was found')
+    printInJSON(resultOfSearch)
+  } else {
+    console.log('No matches. Check inputted parametres')
+  }
+}
+function printInJSON (json) {
+  if (fs.existsSync('./Result')) {
+    fs.writeFileSync('./Result/character.json', JSON.stringify(json, null, ' '))
+  } else {
+    fs.mkdirSync('./Result')
+    fs.writeFileSync('./Result/character.json', JSON.stringify(json, null, ' '))
+  }
+  console.log('character.json file was created ')
 }
 module.exports.checkParams = checkParams
 module.exports.findCharacters = findCharacters
