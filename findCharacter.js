@@ -45,3 +45,4 @@ function printInJSON (json) {
 }
 module.exports.checkParams = checkParams
 module.exports.findCharacters = findCharacters
+module.exports.printInJSON = printInJSON

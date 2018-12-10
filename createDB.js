@@ -29,4 +29,8 @@ const allCharacters = allData.then(body => {
     throw new Error(`DB wasn't uploaded`)
   }
 })
-module.exports.allCharacters = allCharacters
+module.exports = {
+  allCharacters,
+  arrayOfOptions,
+  allData
+}

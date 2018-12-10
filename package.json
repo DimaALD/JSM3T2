@@ -4,13 +4,17 @@
   "description": "",
   "main": "task2.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha tests/test.js"
   },
   "dependencies": {
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
-    "yargs": "*"
+    "yargs": "*",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "chai-as-promised": "^7.1.1"
   },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DimaALD/JSM3T2.git"
